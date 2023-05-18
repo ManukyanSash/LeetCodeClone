@@ -58,10 +58,11 @@ def compile_code(file:str, json_file:str):
 
     if(res[0] == "Success"):
         if extension == ".cpp":
-            subprocess.run(["g++", "/home/sasha/Desktop/demo/runtime_test/chlp.cpp", "-o", "runtime_test/file"], capture_output=True)
+            subprocess.run(["g++", "path/to/chlp.cpp", "-o", "runtime_test/file"], capture_output=True) # like this "/home/sasha/Desktop/demo/runtime_test/chlp.cpp"
         if extension == ".java":
-            subprocess.run(["javac", "/home/sasha/Desktop/demo/runtime_test/file.java", "/home/sasha/Desktop/demo/runtime_test/Solution.java"], capture_output=True)
-        runtime_res = subprocess.run(["/home/sasha/Desktop/demo/runtime_test/main", runLangDict[extension]], capture_output=True)
+            subprocess.run(["javac", "path/to/file.java", "path/to/solution.java"], capture_output=True)
+                            # like this "/home/sasha/Desktop/demo/runtime_test/file.java", "/home/sasha/Desktop/demo/runtime_test/Solution.java"
+        runtime_res = subprocess.run(["path/to/main", runLangDict[extension]], capture_output=True) # like this "/home/sasha/Desktop/demo/runtime_test/main"
         if runtime_res.stderr.decode("utf-8") == "":
             status = "Success"
             if runtime_res.stdout.decode("utf-8") != "true":
